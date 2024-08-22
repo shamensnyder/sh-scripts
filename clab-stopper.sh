@@ -1,21 +1,18 @@
 #!/bin/bash
 
-# move to containerlab dir
-cd /home/ssnyder/clab-quickstart
+# List all running labs
+running_labs=$(containerlab inspect --all | grep -oP '(?<=name: )\S+')
 
-# Get a list of labs
-LABS=$(ls ./ | grep yml)
-
-# Check if any labs are found
-if [ -z "$LABS" ]; then
-  echo "No labs found"
-  exit 1
+# Check if there are any running labs
+if [ -z "$running_labs" ]; then
+  echo "No running labs found."
+  exit 0
 fi
 
-# Stop the labs
-for LAB in $LABS; do
-  echo "Stopping LAB: $LAB"
-  sudo containerlab destroy -t "$LAB"
+# Loop through each running lab and stop it
+for lab in $running_labs; do
+  echo "Stopping lab: $lab"
+  containerlab destroy --name "$lab"
 done
 
-echo "All matching labs have been stopped."
+echo "All running labs have been stopped."
