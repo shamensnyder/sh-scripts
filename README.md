@@ -4,7 +4,7 @@
 
 I constantly forget to turn off my labs. Bash script ran each night with a cron job to turn off my labs at midnight, saving electricty.
 
-ssnyder@eve:~/bash-scripts$ bash clab-stopper.sh
+ssnyder@eve:~/bash-scripts$ bash clab-stopper.sh <br>
 Stopping LAB: crpd-policy.yml <br>
 INFO[0000] no containerlab containers found <br>
 Stopping LAB: crpd-test.yml<br>
