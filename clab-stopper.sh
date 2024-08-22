@@ -15,7 +15,7 @@ fi
 # Stop the labs
 for LAB in $LABS; do
   echo "Stopping LAB: $LAB"
-  docker stop "$LAB"
+  sudo containerlab destroy -t "$LAB"
 done
 
 echo "All matching labs have been stopped."
